@@ -14,6 +14,7 @@ variable "env" {
     error_message = "valid values are 'dev', 'qa', 'stage', 'prod', and 'nonprod'"
   }
 }
+
 variable "program" {
   type        = string
   description = "the program associated with the application"
@@ -23,4 +24,23 @@ variable "program" {
     condition     = contains(["crdc", "ccdi", "ctos"], var.program)
     error_message = "valid values for program are 'crdc', 'ccdi', and 'ctos'"
   }
+}
+
+variable "container_name" {
+  type        = string
+  description = "name of the container this service hosts"
+}
+
+variable "container_port" {
+  type        = number
+  description = "the port exposed for the container for inbound traffic"
+}
+
+variable "resource_name_suffix" {
+  type        = string
+  description = ""
+}
+
+variable "target_group_arn" {
+  type = string
 }
