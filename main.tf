@@ -7,7 +7,9 @@ resource "aws_ecs_service" "this" {
   desired_count                      = var.desired_count
   deployment_minimum_healthy_percent = var.deployment_minimum_healthy_percent
   deployment_maximum_percent         = var.deployment_maximum_percent
-
+  enable_ecs_managed_tags            = true
+  propagate_tags                     = var.propagate_tags
+  platform_version                   = var.platform_version
 
   deployment_controller {
     type = "ECS"
@@ -26,7 +28,10 @@ resource "aws_ecs_service" "this" {
   }
 
   lifecycle {
-    ignore_changes = [desired_count]
+    ignore_changes = [
+      task_definition,
+      desired_count
+    ]
   }
 }
 
@@ -60,6 +65,18 @@ variable "launch_type" {
   default     = "FARGATE"
 }
 
+variable "platform_version" {
+  type        = string
+  description = "platform version on which to run your service - only applicable for launch_type set to FARGATE"
+  default     = "1.4.0"
+}
+
+variable "propagate_tags" {
+  type        = string
+  description = "determines whether tasks inherit tags from the TASK_DEFINITION or the SERVICE"
+  default     = "SERVICE"
+}
+
 variable "scheduling_strategy" {
   type        = string
   description = ""
@@ -80,4 +97,3 @@ variable "task_definition" {
   value       = string
   description = "arn of the task definition associated with the service"
 }
-
