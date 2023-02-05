@@ -11,7 +11,7 @@ resource "aws_ecs_service" "this" {
   propagate_tags                     = var.propagate_tags
   platform_version                   = var.platform_version
 
-  health_check_grace_period_seconds = health_check_grace_period_seconds
+  health_check_grace_period_seconds = var.health_check_grace_period_seconds
 
   deployment_controller {
     type = "ECS"
