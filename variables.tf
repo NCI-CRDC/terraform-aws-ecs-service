@@ -85,12 +85,12 @@ variable "propagate_tags" {
 
 variable "resource_name_suffix" {
   type        = string
-  description = ""
+  description = "the name to append to the ecs service after the stack name (i.e. 'frontend')"
 }
 
 variable "scheduling_strategy" {
   type        = string
-  description = ""
+  description = "scheduling strategy to use for the service - either 'REPLICA' or 'DAEMON' (later not supported by Fargate)"
   default     = "REPLICA"
 }
 
@@ -105,10 +105,11 @@ variable "subnets" {
 }
 
 variable "target_group_arn" {
-  type = string
+  type        = string
+  description = "arn of the associated target group for the services"
 }
 
 variable "task_definition" {
-  value       = string
+  type        = string
   description = "arn of the task definition associated with the service"
 }
