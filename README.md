@@ -45,12 +45,12 @@ No modules.
 | <a name="input_platform_version"></a> [platform\_version](#input\_platform\_version) | platform version on which to run your service - only applicable for launch\_type set to FARGATE | `string` | `"1.4.0"` | no |
 | <a name="input_program"></a> [program](#input\_program) | the program associated with the application | `string` | n/a | yes |
 | <a name="input_propagate_tags"></a> [propagate\_tags](#input\_propagate\_tags) | determines whether tasks inherit tags from the TASK\_DEFINITION or the SERVICE | `string` | `"SERVICE"` | no |
-| <a name="input_resource_name_suffix"></a> [resource\_name\_suffix](#input\_resource\_name\_suffix) | n/a | `string` | n/a | yes |
-| <a name="input_scheduling_strategy"></a> [scheduling\_strategy](#input\_scheduling\_strategy) | n/a | `string` | `"REPLICA"` | no |
+| <a name="input_resource_name_suffix"></a> [resource\_name\_suffix](#input\_resource\_name\_suffix) | the name to append to the ecs service after the stack name (i.e. 'frontend') | `string` | n/a | yes |
+| <a name="input_scheduling_strategy"></a> [scheduling\_strategy](#input\_scheduling\_strategy) | scheduling strategy to use for the service - either 'REPLICA' or 'DAEMON' (later not supported by Fargate) | `string` | `"REPLICA"` | no |
 | <a name="input_security_groups"></a> [security\_groups](#input\_security\_groups) | arns of the security groups to attach to ecs services | `set(string)` | n/a | yes |
 | <a name="input_subnets"></a> [subnets](#input\_subnets) | ids of the target subnets for the ecs deployment | `set(string)` | n/a | yes |
-| <a name="input_target_group_arn"></a> [target\_group\_arn](#input\_target\_group\_arn) | n/a | `string` | n/a | yes |
-| <a name="input_task_definition"></a> [task\_definition](#input\_task\_definition) | arn of the task definition associated with the service | `any` | n/a | yes |
+| <a name="input_target_group_arn"></a> [target\_group\_arn](#input\_target\_group\_arn) | arn of the associated target group for the services | `string` | n/a | yes |
+| <a name="input_task_definition"></a> [task\_definition](#input\_task\_definition) | arn of the task definition associated with the service | `string` | n/a | yes |
 
 # Outputs
 
