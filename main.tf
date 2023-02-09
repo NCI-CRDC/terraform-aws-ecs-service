@@ -19,7 +19,7 @@ resource "aws_ecs_service" "this" {
 
   load_balancer {
     target_group_arn = var.target_group_arn
-    container_name   = "${local.stack}-${var.container_name}"
+    container_name   = "${var.program}-${var.app}-${var.container_name}"
     container_port   = var.container_port
   }
 
